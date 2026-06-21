@@ -1,9 +1,9 @@
 import type { ReactNode } from "react"
 
+import { AuthProvider } from "@/app/providers/auth-provider"
 import { QueryProvider } from "@/app/providers/query-provider"
+import { ThemeProvider } from "@/app/providers/theme-provider"
 import { ToastProvider } from "@/shared/components/ui"
-import { AuthProvider } from "@/shared/auth"
-import { ThemeProvider } from "@/shared/theme"
 
 type AppProvidersProps = {
   children: ReactNode
