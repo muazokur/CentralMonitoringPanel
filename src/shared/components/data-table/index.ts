@@ -1,1 +1,7 @@
 export { DataTable } from "@/shared/components/data-table/data-table"
+export type { DataTableProps } from "@/shared/components/data-table/data-table"
+export { DataTableColumnHeader } from "@/shared/components/data-table/data-table-column-header"
+export { DataTableEmpty } from "@/shared/components/data-table/data-table-empty"
+export { DataTablePagination } from "@/shared/components/data-table/data-table-pagination"
+export { DataTableSkeleton } from "@/shared/components/data-table/data-table-skeleton"
+export { DataTableToolbar } from "@/shared/components/data-table/data-table-toolbar"

@@ -29,6 +29,8 @@ All pages must use the shared versions of these patterns:
 - `PageContainer`, `PageHeader`, `PageContent`, `PageSection`
 - `Card`, `Button`, `Input`, `Select`
 - `DataTable`, `StatusBadge`, `MetricCard`, `ChartCard`
+- `DataTableToolbar`, `DataTablePagination`, `DataTableColumnHeader`
+- `FormCard`, `FormInput`, `FormSelect`, `FormTextarea`, `FormSwitch`, `FormDatePicker`, `FormActions`
 - `FormField`, `EmptyState`, `LoadingState`, `ErrorState`, `PageLoader`
 - `ToastProvider` / `useToast` for toast notifications
 - `ConfirmDialog` for destructive or irreversible confirmation
@@ -47,11 +49,56 @@ Do not create page-specific colors, spacing, shadows, radii, typography scales, 
 
 ## Page Patterns
 
-- List pages: `PageHeader` actions, optional filters, `DataTable`, then empty/loading/error states.
-- Detail pages: `PageHeader`, summary `MetricCard` row, then `PageSection` groups.
-- Form pages: `PageHeader`, one form surface, `FormField` spacing, sticky or clearly grouped actions only when needed.
-- Dashboard pages: `MetricCard` grid followed by `ChartCard` and operational sections.
+- List pages: `PageHeader`, filter/search area, `Card` surface, `DataTable`, and `DataTablePagination`.
+- Dashboard pages: `PageHeader`, responsive `MetricCard` grid, `ChartCard` rows, then recent activity, alerts, or health summary sections.
+- Detail pages: `PageHeader`, summary `MetricCard` row, tabs when needed, detail `PageSection` groups, and history `DataTable`.
+- Form pages: `PageHeader`, `FormCard`, validation via shared form fields, and `FormActions` as a sticky footer when the form is long.
 - Empty pages: use `EmptyState` inside the same layout surface where content would appear.
+
+### List Page Pattern
+
+Use this sequence for all list and management pages:
+
+1. `PageHeader` with title, description, and page-level actions.
+2. `DataTable` toolbar search and feature filters.
+3. Shared table surface with `DataTableColumnHeader` for sortable columns.
+4. Row actions through column definitions.
+5. `DataTablePagination`.
+
+Never build custom table wrappers inside feature pages.
+
+### Dashboard Page Pattern
+
+Use this sequence for operational dashboards:
+
+1. `PageHeader`.
+2. Responsive `MetricCard` grid.
+3. `ChartCard` sections for trends, OEE, quality, downtime, or throughput.
+4. Recent activity, alerts, and health summaries using shared cards and tables.
+
+Dashboard cards must wrap from one column on mobile to multi-column layouts on larger screens.
+
+### Detail Page Pattern
+
+Use this sequence for gateway, machine, tag, user, or role detail pages:
+
+1. `PageHeader` with identity and actions.
+2. Summary `MetricCard` row.
+3. Tabs only when the detail has genuinely separate views.
+4. `PageSection` groups for configuration, live state, ownership, or permissions.
+5. History or audit data through `DataTable`.
+
+### Form Page Pattern
+
+Use this sequence for create/edit pages:
+
+1. `PageHeader`.
+2. One `FormCard` per logical form area.
+3. `FormInput`, `FormSelect`, `FormTextarea`, `FormSwitch`, and `FormDatePicker`.
+4. Zod schema validation surfaced through shared field errors.
+5. `FormActions` with loading submit state and cancel action.
+
+Long forms may use sticky `FormActions`; short forms should use the standard card footer.
 
 ## Spacing Rules
 
@@ -85,15 +132,23 @@ Do not create page-specific colors, spacing, shadows, radii, typography scales, 
 - Headers are muted, uppercase, and compact.
 - Rows use subtle hover states and no heavy striping.
 - Empty table results use `EmptyState`.
+- Loading table results use `DataTableSkeleton`.
+- Search and filters belong in `DataTableToolbar`.
+- Pagination belongs in `DataTablePagination`.
+- Sortable headers use `DataTableColumnHeader`.
+- Status values use `StatusBadge status="..."`.
 - Feature pages must not create custom table density or row styling.
 
 ## Form Rules
 
 - Use `FormField` for label, help text, and error text.
-- Use shared `Input`, `Select`, and future shared form controls.
+- Use `FormInput`, `FormSelect`, `FormTextarea`, `FormSwitch`, and `FormDatePicker` for React Hook Form forms.
 - Keep mobile forms single-column.
 - Use two-column desktop forms only when fields are short and naturally grouped.
 - Validation errors use `text-destructive`; do not invent warning/error colors.
+- Use `FormCard` for form surfaces and `FormActions` for submit/cancel controls.
+- Submit buttons must show loading state while mutations are pending.
+- Date inputs use the shared native `FormDatePicker` until a tokenized calendar component is introduced.
 
 ## Do / Don't
 

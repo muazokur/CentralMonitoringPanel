@@ -18,6 +18,9 @@ export {
   SelectValue,
 } from "@/shared/components/ui/select"
 export { Skeleton } from "@/shared/components/ui/skeleton"
-export { StatusBadge } from "@/shared/components/ui/status-badge"
+export {
+  StatusBadge,
+  type StatusBadgeStatus,
+} from "@/shared/components/ui/status-badge"
 export { ToastProvider } from "@/shared/components/ui/toast-provider"
 export { useToast } from "@/shared/components/ui/use-toast"
