@@ -8,6 +8,10 @@ const router = createBrowserRouter([
     path: ROUTE_PATHS.home,
     element: <FoundationPage />,
   },
+  {
+    path: "*",
+    element: <FoundationPage />,
+  },
 ])
 
 export function AppRouter() {

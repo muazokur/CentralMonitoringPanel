@@ -1,7 +1,9 @@
 import type { ReactNode } from "react"
 
 import { QueryProvider } from "@/app/providers/query-provider"
+import { ToastProvider } from "@/shared/components/ui"
 import { AuthProvider } from "@/shared/auth"
+import { ThemeProvider } from "@/shared/theme"
 
 type AppProvidersProps = {
   children: ReactNode
@@ -9,8 +11,12 @@ type AppProvidersProps = {
 
 export function AppProviders({ children }: AppProvidersProps) {
   return (
-    <QueryProvider>
-      <AuthProvider>{children}</AuthProvider>
-    </QueryProvider>
+    <ThemeProvider>
+      <QueryProvider>
+        <AuthProvider>
+          <ToastProvider>{children}</ToastProvider>
+        </AuthProvider>
+      </QueryProvider>
+    </ThemeProvider>
   )
 }
