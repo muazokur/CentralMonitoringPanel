@@ -1,5 +1,6 @@
 import { createContext } from "react"
 
+import type { Permission } from "@/shared/constants"
 import type { AuthSession, AuthUser } from "@/shared/types"
 
 export type AuthContextValue = {
@@ -9,7 +10,7 @@ export type AuthContextValue = {
   setSession: (session: AuthSession) => void
   clearSession: () => void
   hasRole: (role: string) => boolean
-  hasPermission: (permission: string) => boolean
+  hasPermission: (permission: Permission) => boolean
 }
 
 export const AuthContext = createContext<AuthContextValue | undefined>(

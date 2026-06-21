@@ -1,9 +1,11 @@
+import type { Permission } from "@/shared/constants"
+
 export type AuthUser = {
   id: string
   displayName: string
   email?: string
   roles: string[]
-  permissions: string[]
+  permissions: Permission[]
 }
 
 export type AuthSession = {

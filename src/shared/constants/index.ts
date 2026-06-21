@@ -5,5 +5,10 @@ export {
   type NavigationItem,
   type NavigationSection,
 } from "@/shared/constants/navigation"
+export {
+  ALL_PERMISSIONS,
+  PERMISSIONS,
+  type Permission,
+} from "@/shared/constants/permissions"
 export { ROUTE_PATHS } from "@/shared/constants/routes"
 export { STORAGE_KEYS } from "@/shared/constants/storage-keys"

@@ -1,3 +1,4 @@
+import type { ReactElement } from "react"
 import { Navigate, createBrowserRouter } from "react-router"
 
 import { NotFoundRoute } from "@/app/router/not-found-route"
@@ -22,6 +23,13 @@ import { SettingsPage } from "@/pages/settings-page"
 import { TagValueHistoryPage } from "@/pages/tag-value-history-page"
 import { TagsPage } from "@/pages/tags-page"
 import { UsersPage } from "@/pages/users-page"
+import { PERMISSIONS, type Permission } from "@/shared/constants"
+
+function withPermission(element: ReactElement, permissions: Permission[]) {
+  return (
+    <ProtectedRoute requiredPermissions={permissions}>{element}</ProtectedRoute>
+  )
+}
 
 export const router = createBrowserRouter([
   {
@@ -46,59 +54,73 @@ export const router = createBrowserRouter([
       },
       {
         path: ROUTE_PATHS.dashboard,
-        element: <DashboardPage />,
+        element: withPermission(<DashboardPage />, [
+          PERMISSIONS.dashboardView,
+        ]),
       },
       {
         path: ROUTE_PATHS.edgeGateways,
-        element: <EdgeGatewaysPage />,
+        element: withPermission(<EdgeGatewaysPage />, [
+          PERMISSIONS.edgeGatewaysView,
+        ]),
       },
       {
         path: ROUTE_PATHS.edgeGatewayDetail,
-        element: <EdgeGatewayDetailPage />,
+        element: withPermission(<EdgeGatewayDetailPage />, [
+          PERMISSIONS.edgeGatewaysView,
+        ]),
       },
       {
         path: ROUTE_PATHS.machines,
-        element: <MachinesPage />,
+        element: withPermission(<MachinesPage />, [PERMISSIONS.machinesView]),
       },
       {
         path: ROUTE_PATHS.machineDetail,
-        element: <MachineDetailPage />,
+        element: withPermission(<MachineDetailPage />, [
+          PERMISSIONS.machinesView,
+        ]),
       },
       {
         path: ROUTE_PATHS.tags,
-        element: <TagsPage />,
+        element: withPermission(<TagsPage />, [PERMISSIONS.tagsView]),
       },
       {
         path: ROUTE_PATHS.tagValueHistory,
-        element: <TagValueHistoryPage />,
+        element: withPermission(<TagValueHistoryPage />, [
+          PERMISSIONS.tagsView,
+        ]),
       },
       {
         path: ROUTE_PATHS.oee,
-        element: <OeeDashboardPage />,
+        element: withPermission(<OeeDashboardPage />, [PERMISSIONS.oeeView]),
       },
       {
         path: ROUTE_PATHS.analytics,
-        element: <AnalyticsPage />,
+        element: withPermission(<AnalyticsPage />, [
+          PERMISSIONS.analyticsView,
+        ]),
       },
       {
         path: ROUTE_PATHS.alerts,
-        element: <AlertsPage />,
+        element: withPermission(<AlertsPage />, [PERMISSIONS.alertsView]),
       },
       {
         path: ROUTE_PATHS.reports,
-        element: <ReportsPage />,
+        element: withPermission(<ReportsPage />, [PERMISSIONS.reportsView]),
       },
       {
         path: ROUTE_PATHS.users,
-        element: <UsersPage />,
+        element: withPermission(<UsersPage />, [PERMISSIONS.usersView]),
       },
       {
         path: ROUTE_PATHS.roles,
-        element: <RolesPage />,
+        element: withPermission(<RolesPage />, [PERMISSIONS.rolesView]),
       },
       {
         path: ROUTE_PATHS.settings,
-        element: <SettingsPage />,
+        element: withPermission(<SettingsPage />, [
+          PERMISSIONS.settingsView,
+        ]),
       },
     ],
   },

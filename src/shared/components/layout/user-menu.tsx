@@ -1,11 +1,16 @@
 import { LogOut, Settings, User } from "lucide-react"
 import { DropdownMenu } from "radix-ui"
 
+import { useCurrentUser } from "@/features/auth/hooks/use-current-user"
+import { useLogout } from "@/features/auth/hooks/use-logout"
 import { Button } from "@/shared/components/ui"
 import { useAuth } from "@/shared/auth"
 
 export function UserMenu() {
-  const { clearSession, user } = useAuth()
+  const { user: sessionUser } = useAuth()
+  const currentUserQuery = useCurrentUser()
+  const logoutMutation = useLogout()
+  const user = currentUserQuery.data ?? sessionUser
   const displayName = user?.displayName ?? "Operations"
   const email = user?.email ?? "monitoring.local"
   const initials = displayName
@@ -50,10 +55,13 @@ export function UserMenu() {
           <DropdownMenu.Separator className="my-1 h-px bg-border" />
           <DropdownMenu.Item
             className="flex min-h-9 cursor-default items-center gap-2 rounded-md px-2 text-sm text-destructive outline-none transition-colors focus:bg-destructive/10"
-            onSelect={clearSession}
+            onSelect={(event) => {
+              event.preventDefault()
+              logoutMutation.mutate()
+            }}
           >
             <LogOut className="size-4" />
-            Sign out
+            {logoutMutation.isPending ? "Signing out..." : "Sign out"}
           </DropdownMenu.Item>
         </DropdownMenu.Content>
       </DropdownMenu.Portal>

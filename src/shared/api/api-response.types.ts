@@ -1,6 +1,5 @@
 export type { ApiError, ApiResponse } from "@/shared/types/common.types"
 export type {
   PaginatedResponse,
-  PaginatedResponse as PagedResult,
   PaginationRequest,
 } from "@/shared/types/pagination.types"

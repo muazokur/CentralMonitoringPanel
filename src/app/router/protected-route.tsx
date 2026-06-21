@@ -3,10 +3,11 @@ import { Navigate, Outlet, useLocation } from "react-router"
 
 import { ROUTE_PATHS } from "@/app/router/route-paths"
 import { useAuth } from "@/shared/auth"
+import type { Permission } from "@/shared/constants"
 
 type ProtectedRouteProps = {
   children?: ReactNode
-  requiredPermissions?: string[]
+  requiredPermissions?: Permission[]
   requiredRoles?: string[]
 }
 

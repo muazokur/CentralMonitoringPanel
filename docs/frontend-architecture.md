@@ -2,76 +2,89 @@
 
 ## Folder Structure
 
-- `src/app`: application composition, provider wiring, routing, and app-level config.
-- `src/pages`: route-level page components. Pages compose shared layout and feature modules.
-- `src/features`: feature-owned business code. Future feature modules live here before being composed by pages.
-- `src/shared`: reusable infrastructure and UI primitives: API, auth, layout, page, feedback, charts, forms, tables, constants, hooks, lib, and types.
-- `src/styles`: global Tailwind and design token definitions.
-- `docs`: frontend architecture and UI guidelines.
+- `src/app`: app composition, providers, routing, and app-level config.
+- `src/pages`: thin route-level pages that compose shared layout and feature modules.
+- `src/features`: feature-owned API functions, hooks, schemas, components, and types.
+- `src/shared`: reusable API, auth, UI, layout, page, feedback, chart, form, table, constants, hooks, lib, and types.
+- `src/styles`: Tailwind and semantic design tokens.
 
 ## App Layer
 
 - `src/app/App.tsx` renders `AppProviders` and `AppRouter`.
-- `src/app/config/env.ts` safely reads Vite environment variables and supplies defaults.
-- `src/app/config/app-config.ts` stores app-level metadata and default navigation targets.
-- App code may compose shared modules, but shared modules should not depend on page or feature modules.
+- `src/app/config/env.ts` reads Vite environment variables safely and supplies defaults.
+- `src/app/config/app-config.ts` stores app metadata and default navigation targets.
+- `src/app/providers` adapts shared providers for query, theme, auth, and toast composition.
 
-## Providers
+## API Layer
 
-- `app-providers.tsx` is the single provider composition point.
-- `query-provider.tsx` wires TanStack Query and the shared `queryClient`.
-- `theme-provider.tsx` adapts the shared light/dark/system theme provider for the app layer.
-- `auth-provider.tsx` adapts the shared auth session provider for the app layer.
-- Toast infrastructure is mounted globally through the shared `ToastProvider`.
+- `src/shared/api/http-client.ts` owns Axios configuration, timeout, Bearer token injection, response handling, and typed helpers.
+- `src/shared/api/api-error.ts` normalizes Axios, network, server, and unknown errors into `ApiError`.
+- `src/shared/api/endpoints.ts` centralizes backend paths such as auth endpoints.
+- `src/shared/api/api-response.types.ts` exports common response types.
+- `401` responses clear the session and redirect to `/login`; `403` responses redirect to `/403`.
+- Feature API modules should call `apiGet`, `apiPost`, or `httpClient` instead of creating new Axios instances.
+
+## Auth Flow
+
+- `/login` is a public route and redirects authenticated users to `/app/dashboard`.
+- `LoginForm` uses React Hook Form and Zod validation.
+- `useLogin` calls the auth API, stores the returned session, hydrates the current-user query, and redirects to the attempted protected route or dashboard.
+- `useLogout` calls the logout API, clears session/token state, clears auth queries, and redirects to `/login`.
+- `token-storage.ts` stores access/refresh tokens; `auth-session.ts` stores the full session for this foundation stage.
+- Until real endpoints are configured through `VITE_API_BASE_URL`, auth functions return a local mock session with broad development permissions.
+
+## Permission System
+
+- Permission constants live in `src/shared/constants/permissions.ts`.
+- `ProtectedRoute` supports route-level permissions and redirects denied users to `/403`.
+- `PermissionGuard` supports component/action-level access control with hide or disabled behavior.
+- `usePermission` exposes `can`, `canAny`, and `canAll`.
+- Permission strings are plain constants, for example `PERMISSIONS.machinesCreate`.
 
 ## Router
 
 - `src/app/router/routes.tsx` owns the browser router.
-- `route-paths.ts` re-exports the canonical route constants from shared constants.
-- `protected-route.tsx` protects `/app/*` routes and redirects unauthenticated users to `/login`.
-- `public-route.tsx` redirects authenticated users away from public auth routes.
-- `not-found-route.tsx` normalizes unknown URLs to `/404`.
-
-## Route Protection
-
+- `route-paths.ts` re-exports canonical route constants.
 - Protected pages live under `/app`.
-- Unauthenticated access redirects to `/login` and preserves the attempted location in route state.
-- Role and permission checks are supported by `ProtectedRoute`; failures redirect to `/403`.
-- Public auth routes should be wrapped in `PublicRoute`.
+- Unknown routes normalize to `/404`.
+- Error routes `/403`, `/404`, and `/500` use the same design tokens and card language as the app.
 
 ## Page Pattern
 
 - Protected pages use `AppLayout`.
 - Page structure is `PageContainer` -> `PageHeader` -> `PageContent`.
 - Placeholder pages use `EmptyState` until feature-specific UI is implemented.
-- Error pages use the same card, badge, color, radius, and shadow tokens as the rest of the app.
 - Pages must not introduce page-specific colors, spacing, shadows, typography scales, or table/form patterns.
 
-## Current Routes
+## Adding A New API Hook
 
-- `/login`
-- `/app/dashboard`
-- `/app/edge-gateways`
-- `/app/edge-gateways/:edgeGatewayId`
-- `/app/machines`
-- `/app/machines/:machineId`
-- `/app/tags`
-- `/app/tag-value-history`
-- `/app/oee`
-- `/app/analytics`
-- `/app/alerts`
-- `/app/reports`
-- `/app/users`
-- `/app/roles`
-- `/app/settings`
-- `/403`, `/404`, `/500`
+1. Add endpoint constants to `src/shared/api/endpoints.ts`.
+2. Create feature API functions under `src/features/<feature>/api`.
+3. Add query keys under the feature API folder.
+4. Create a hook under `src/features/<feature>/hooks` using TanStack Query or Mutation.
+5. Normalize errors through the shared API client; do not catch and reshape errors in pages.
 
-## Adding A New Page
+## Protecting A Route
 
 1. Add the path to `src/shared/constants/routes.ts`.
-2. Add navigation metadata to `src/shared/constants/navigation.ts` when the page should appear in the sidebar.
-3. Create a route-level page in `src/pages`.
-4. Register the route in `src/app/router/routes.tsx`.
-5. For protected pages, compose with `AppLayout`, `PageContainer`, `PageHeader`, and `PageContent`.
-6. Put business-specific logic in `src/features/<feature-name>` and import it into the page.
-7. Reuse shared components before creating any new visual pattern.
+2. Add the permission to `src/shared/constants/permissions.ts` if needed.
+3. Register the route in `src/app/router/routes.tsx`.
+4. Wrap the page element with `ProtectedRoute requiredPermissions={[PERMISSIONS.example]}`.
+
+## Using PermissionGuard
+
+```tsx
+<PermissionGuard permission={PERMISSIONS.machinesCreate}>
+  <Button>Create machine</Button>
+</PermissionGuard>
+
+<PermissionGuard
+  behavior="disable"
+  permission={[PERMISSIONS.usersManage, PERMISSIONS.rolesManage]}
+  mode="any"
+>
+  <Button>Manage access</Button>
+</PermissionGuard>
+```
+
+Use `PermissionGuard` for buttons, page actions, secondary panels, and feature fragments. Keep route protection in the router.

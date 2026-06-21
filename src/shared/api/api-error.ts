@@ -10,6 +10,23 @@ function readStringField(source: Record<string, unknown>, field: string) {
 }
 
 export function normalizeApiError(error: unknown): ApiError {
+  if (isRecord(error) && typeof error.message === "string") {
+    return {
+      message: error.message,
+      status: typeof error.status === "number" ? error.status : undefined,
+      code: typeof error.code === "string" ? error.code : undefined,
+      correlationId:
+        typeof error.correlationId === "string"
+          ? error.correlationId
+          : undefined,
+      details: error.details,
+      isNetworkError:
+        typeof error.isNetworkError === "boolean"
+          ? error.isNetworkError
+          : undefined,
+    }
+  }
+
   if (axios.isAxiosError(error)) {
     const responseData: unknown = error.response?.data
     const responseRecord = isRecord(responseData) ? responseData : undefined
@@ -29,6 +46,7 @@ export function normalizeApiError(error: unknown): ApiError {
         ? readStringField(responseRecord, "correlationId")
         : undefined,
       details: responseData,
+      isNetworkError: !error.response,
     }
   }
 

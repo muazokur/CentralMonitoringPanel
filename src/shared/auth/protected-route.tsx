@@ -3,10 +3,11 @@ import { Navigate, useLocation } from "react-router"
 
 import { useAuth } from "@/shared/auth/use-auth"
 import { ROUTE_PATHS } from "@/shared/constants"
+import type { Permission } from "@/shared/constants"
 
 type ProtectedRouteProps = {
   children: ReactNode
-  requiredPermissions?: string[]
+  requiredPermissions?: Permission[]
   requiredRoles?: string[]
 }
 
@@ -35,7 +36,7 @@ export function ProtectedRoute({
     !requiredPermissions.every((permission) => hasPermission(permission))
 
   if (lacksRole || lacksPermission) {
-    return <Navigate replace to={ROUTE_PATHS.home} />
+    return <Navigate replace to={ROUTE_PATHS.forbidden} />
   }
 
   return children

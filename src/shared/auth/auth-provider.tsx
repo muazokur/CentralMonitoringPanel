@@ -41,7 +41,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   )
 
   const hasPermission = useCallback(
-    (permission: string) =>
+    (permission: AuthSession["user"]["permissions"][number]) =>
       Boolean(session?.user.permissions.includes(permission)),
     [session],
   )
