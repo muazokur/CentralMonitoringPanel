@@ -56,6 +56,65 @@
 - Placeholder pages use `EmptyState` until feature-specific UI is implemented.
 - Pages must not introduce page-specific colors, spacing, shadows, typography scales, or table/form patterns.
 
+## Feature-Based Architecture
+
+Feature modules live under `src/features/<feature-name>` and own business-facing types, mock data, API functions, query hooks, schemas, and lightweight composition components. Pages should import from feature `index.ts` files and compose feature components with shared layout primitives.
+
+Feature components are not page designs. They should expose reusable pieces such as tables, summary cards, charts, forms, and status helpers while relying on shared `DataTable`, `StatusBadge`, `MetricCard`, `ChartCard`, `FormCard`, and form fields.
+
+## Feature Folder Standard
+
+Use this folder shape for every feature:
+
+```txt
+features/<feature-name>/
+  api/
+  components/
+  hooks/
+  mocks/
+  schemas/
+  types/
+  index.ts
+```
+
+- `api/`: mock-friendly functions that can later swap to shared HTTP client calls.
+- `components/`: reusable feature composition pieces, not route pages.
+- `hooks/`: TanStack Query hooks and mutation hooks.
+- `mocks/`: realistic in-memory fixtures used only by feature API functions.
+- `schemas/`: Zod schemas for form-ready entities.
+- `types/`: feature-owned TypeScript models and form value types.
+- `index.ts`: public exports for pages and adjacent features.
+
+If a feature has no forms yet, `schemas/` may stay absent until needed. The current foundations include schemas for edge gateways, machines, tags, alerts, users, roles, and settings.
+
+## Mock Data Rules
+
+- Mock data belongs in `src/features/<feature>/mocks`.
+- Do not place mock arrays or sample entities in `src/pages`.
+- API files should read mock data through small async functions and simulate latency with shared mock helpers.
+- Mock fields should resemble backend DTOs closely enough that the API function can later be replaced without changing pages.
+- Keep mocks realistic but small; feature pages can request richer data through hooks when needed.
+
+## API Hook Rules
+
+- Query keys live beside the feature API, for example `machines-query-keys.ts`.
+- List hooks use names like `useMachines`, `useAlerts`, and `useReports`.
+- Detail hooks use names like `useMachineDetail` and accept the route/entity id.
+- Mutation hooks invalidate the feature root query key after success.
+- Hooks should return TanStack Query results directly; pages decide how to render `LoadingState`, `ErrorState`, and `EmptyState`.
+- Do not hardcode backend URLs in feature hooks. Use feature API functions and shared endpoint constants when real endpoints are added.
+
+## Adding A New Feature
+
+1. Create the standard feature folders.
+2. Add feature types first, then mock data under `mocks/`.
+3. Add API functions that return typed mock data through the shared mock helper.
+4. Add query keys and hooks.
+5. Add lightweight feature components using shared design-system primitives.
+6. Add form schemas only when the feature owns forms.
+7. Export the public surface from `index.ts`.
+8. Compose the feature from a page without adding page-specific visual styles.
+
 ## Adding A New API Hook
 
 1. Add endpoint constants to `src/shared/api/endpoints.ts`.
