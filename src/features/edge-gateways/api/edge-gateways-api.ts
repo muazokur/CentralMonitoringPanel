@@ -1,7 +1,11 @@
 import { simulateNetwork } from "@/features/mock-utils"
-import { edgeGatewaysMock } from "@/features/edge-gateways/mocks/edge-gateways.mock"
+import {
+  edgeGatewayDetailsMock,
+  edgeGatewaysMock,
+} from "@/features/edge-gateways/mocks/edge-gateways.mock"
 import type {
   EdgeGateway,
+  EdgeGatewayDetail,
   EdgeGatewayFormValues,
 } from "@/features/edge-gateways/types/edge-gateway.types"
 
@@ -11,9 +15,9 @@ export async function getEdgeGateways(): Promise<EdgeGateway[]> {
 
 export async function getEdgeGatewayDetail(
   gatewayId: string,
-): Promise<EdgeGateway | undefined> {
+): Promise<EdgeGatewayDetail | null> {
   return simulateNetwork(
-    edgeGatewaysMock.find((gateway) => gateway.id === gatewayId),
+    edgeGatewayDetailsMock.find((gateway) => gateway.id === gatewayId) ?? null,
   )
 }
 

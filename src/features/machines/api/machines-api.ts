@@ -1,7 +1,11 @@
 import { simulateNetwork } from "@/features/mock-utils"
-import { machinesMock } from "@/features/machines/mocks/machines.mock"
+import {
+  machineDetailsMock,
+  machinesMock,
+} from "@/features/machines/mocks/machines.mock"
 import type {
   Machine,
+  MachineDetail,
   MachineFormValues,
 } from "@/features/machines/types/machine.types"
 
@@ -11,8 +15,10 @@ export async function getMachines(): Promise<Machine[]> {
 
 export async function getMachineDetail(
   machineId: string,
-): Promise<Machine | undefined> {
-  return simulateNetwork(machinesMock.find((machine) => machine.id === machineId))
+): Promise<MachineDetail | null> {
+  return simulateNetwork(
+    machineDetailsMock.find((machine) => machine.id === machineId) ?? null,
+  )
 }
 
 export async function createMachine(values: MachineFormValues): Promise<Machine> {

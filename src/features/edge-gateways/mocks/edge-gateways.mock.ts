@@ -1,4 +1,7 @@
-import type { EdgeGateway } from "@/features/edge-gateways/types/edge-gateway.types"
+import type {
+  EdgeGateway,
+  EdgeGatewayDetail,
+} from "@/features/edge-gateways/types/edge-gateway.types"
 
 export const edgeGatewaysMock: EdgeGateway[] = [
   {
@@ -33,5 +36,153 @@ export const edgeGatewaysMock: EdgeGateway[] = [
     dataReceiveStatus: "stopped",
     firmwareVersion: "2.8.1",
     location: "Packaging / Zone C",
+  },
+]
+
+export const edgeGatewayDetailsMock: EdgeGatewayDetail[] = [
+  {
+    ...edgeGatewaysMock[0],
+    healthScore: 96,
+    healthStatus: "healthy",
+    lastDataReceivedAt: "2026-06-21T09:42:18.000Z",
+    connectedMachines: [
+      {
+        id: "mach-cnc-204",
+        name: "CNC Milling 204",
+        code: "CNC-204",
+        status: "warning",
+        currentState: "idle",
+        oee: 69.8,
+        lastUpdate: "2026-06-21T09:39:51.000Z",
+      },
+      {
+        id: "mach-paint-018",
+        name: "Paint Booth 18",
+        code: "PNT-018",
+        status: "active",
+        currentState: "running",
+        oee: 88.2,
+        lastUpdate: "2026-06-21T09:41:40.000Z",
+      },
+    ],
+    recentTagValues: [
+      {
+        id: "egw-tag-001",
+        tag: "CNC204.SPD",
+        machine: "CNC Milling 204",
+        value: "9,840 rpm",
+        quality: "uncertain",
+        timestamp: "2026-06-21T09:41:55.000Z",
+      },
+      {
+        id: "egw-tag-002",
+        tag: "PNT018.TEMP",
+        machine: "Paint Booth 18",
+        value: "22.8 C",
+        quality: "good",
+        timestamp: "2026-06-21T09:42:12.000Z",
+      },
+    ],
+    alerts: [
+      {
+        id: "egw-alert-001",
+        severity: "warning",
+        machine: "CNC Milling 204",
+        message: "Spindle speed variance detected for two sampling windows.",
+        status: "pending",
+        createdAt: "2026-06-21T09:36:00.000Z",
+      },
+    ],
+  },
+  {
+    ...edgeGatewaysMock[1],
+    healthScore: 74,
+    healthStatus: "degraded",
+    lastDataReceivedAt: "2026-06-21T09:37:51.000Z",
+    connectedMachines: [
+      {
+        id: "mach-press-101",
+        name: "Hydraulic Press 101",
+        code: "PRS-101",
+        status: "active",
+        currentState: "running",
+        oee: 84.6,
+        lastUpdate: "2026-06-21T09:41:16.000Z",
+      },
+      {
+        id: "mach-press-112",
+        name: "Transfer Press 112",
+        code: "PRS-112",
+        status: "warning",
+        currentState: "maintenance",
+        oee: 62.5,
+        lastUpdate: "2026-06-21T09:35:09.000Z",
+      },
+    ],
+    recentTagValues: [
+      {
+        id: "egw-tag-003",
+        tag: "PRS101.LOAD",
+        machine: "Hydraulic Press 101",
+        value: "184.4 kN",
+        quality: "good",
+        timestamp: "2026-06-21T09:42:01.000Z",
+      },
+      {
+        id: "egw-tag-004",
+        tag: "PRS112.OIL_TEMP",
+        machine: "Transfer Press 112",
+        value: "74.2 C",
+        quality: "uncertain",
+        timestamp: "2026-06-21T09:37:51.000Z",
+      },
+    ],
+    alerts: [
+      {
+        id: "egw-alert-002",
+        severity: "warning",
+        machine: "Transfer Press 112",
+        message: "Gateway heartbeat delayed outside the expected threshold.",
+        status: "pending",
+        createdAt: "2026-06-21T09:37:44.000Z",
+      },
+    ],
+  },
+  {
+    ...edgeGatewaysMock[2],
+    healthScore: 28,
+    healthStatus: "offline",
+    lastDataReceivedAt: "2026-06-21T08:58:02.000Z",
+    connectedMachines: [
+      {
+        id: "mach-pack-022",
+        name: "Packaging Cell 22",
+        code: "PKG-022",
+        status: "critical",
+        currentState: "stopped",
+        oee: 41.2,
+        lastUpdate: "2026-06-21T08:58:02.000Z",
+      },
+    ],
+    recentTagValues: [
+      {
+        id: "egw-tag-005",
+        tag: "PKG022.ALARM",
+        machine: "Packaging Cell 22",
+        value: "true",
+        quality: "bad",
+        timestamp: "2026-06-21T08:58:02.000Z",
+      },
+    ],
+    alerts: [
+      {
+        id: "egw-alert-003",
+        severity: "critical",
+        machine: "Packaging Cell 22",
+        message: "Gateway stopped sending telemetry after safety alarm event.",
+        status: "pending",
+        createdAt: "2026-06-21T08:58:12.000Z",
+      },
+    ],
   },
 ]
