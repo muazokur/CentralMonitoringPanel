@@ -37,6 +37,24 @@ export type MachineStatusDistribution = {
   count: number
 }
 
+export type LatestGatewayActivity = {
+  id: string
+  gatewayName: string
+  status: "online" | "warning" | "offline"
+  event: string
+  message: string
+  timestamp: string
+  dataPoints: number
+}
+
+export type SystemHealthSignal = {
+  id: string
+  label: string
+  value: string
+  helperText: string
+  status: StatusBadgeStatus
+}
+
 export type DashboardOverview = {
   activeMachines: number
   offlineMachines: number
@@ -47,4 +65,6 @@ export type DashboardOverview = {
   recentAlerts: DashboardRecentAlert[]
   oeeTrend: OeeTrendPoint[]
   machineStatusDistribution: MachineStatusDistribution[]
+  latestGatewayActivity: LatestGatewayActivity[]
+  systemHealthSummary: SystemHealthSignal[]
 }

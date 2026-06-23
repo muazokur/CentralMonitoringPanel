@@ -77,6 +77,7 @@ Use this sequence for operational dashboards:
 4. Recent activity, alerts, and health summaries using shared cards and tables.
 
 Dashboard cards must wrap from one column on mobile to multi-column layouts on larger screens.
+Dashboard pages should stay composition-only: domain-specific cards, charts, and summaries belong under the owning feature module and consume data from feature hooks.
 
 ### Detail Page Pattern
 
