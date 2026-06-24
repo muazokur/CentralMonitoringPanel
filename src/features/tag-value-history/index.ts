@@ -1,5 +1,6 @@
 export * from "./api/tag-value-history-api"
 export * from "./api/tag-value-history-query-keys"
+export * from "./components/tag-value-history-filters"
 export * from "./components/tag-value-history-table"
 export * from "./hooks/use-tag-value-history"
 export * from "./mocks/tag-value-history.mock"

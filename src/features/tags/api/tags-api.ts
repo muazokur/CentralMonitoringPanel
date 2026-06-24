@@ -1,9 +1,19 @@
 import { simulateNetwork } from "@/features/mock-utils"
-import { tagsMock } from "@/features/tags/mocks/tags.mock"
-import type { PlcTag, TagFormValues } from "@/features/tags/types/tag.types"
+import { tagDetailsMock, tagsMock } from "@/features/tags/mocks/tags.mock"
+import type {
+  PlcTag,
+  TagDetail,
+  TagFormValues,
+} from "@/features/tags/types/tag.types"
 
 export async function getTags(): Promise<PlcTag[]> {
   return simulateNetwork(tagsMock)
+}
+
+export async function getTagDetail(tagId: string): Promise<TagDetail | null> {
+  return simulateNetwork(
+    tagDetailsMock.find((tag) => tag.id === tagId) ?? null,
+  )
 }
 
 export async function createTag(values: TagFormValues): Promise<PlcTag> {

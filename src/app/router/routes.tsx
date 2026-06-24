@@ -20,6 +20,7 @@ import { ReportsPage } from "@/pages/reports-page"
 import { RolesPage } from "@/pages/roles-page"
 import { ServerErrorPage } from "@/pages/server-error-page"
 import { SettingsPage } from "@/pages/settings-page"
+import { TagDetailPage } from "@/pages/tag-detail-page"
 import { TagValueHistoryPage } from "@/pages/tag-value-history-page"
 import { TagsPage } from "@/pages/tags-page"
 import { UsersPage } from "@/pages/users-page"
@@ -83,6 +84,10 @@ export const router = createBrowserRouter([
       {
         path: ROUTE_PATHS.tags,
         element: withPermission(<TagsPage />, [PERMISSIONS.tagsView]),
+      },
+      {
+        path: ROUTE_PATHS.tagDetail,
+        element: withPermission(<TagDetailPage />, [PERMISSIONS.tagsView]),
       },
       {
         path: ROUTE_PATHS.tagValueHistory,

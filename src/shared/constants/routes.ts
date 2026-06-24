@@ -8,6 +8,7 @@ export const ROUTE_PATHS = {
   machines: "/app/machines",
   machineDetail: "/app/machines/:machineId",
   tags: "/app/tags",
+  tagDetail: "/app/tags/:tagId",
   tagValueHistory: "/app/tag-value-history",
   oee: "/app/oee",
   analytics: "/app/analytics",
