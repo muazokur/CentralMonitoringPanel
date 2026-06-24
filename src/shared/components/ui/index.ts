@@ -10,6 +10,7 @@ export {
 } from "@/shared/components/ui/card"
 export { ConfirmDialog } from "@/shared/components/ui/confirm-dialog"
 export { Input } from "@/shared/components/ui/input"
+export { ProgressBar } from "@/shared/components/ui/progress-bar"
 export {
   Select,
   SelectContent,

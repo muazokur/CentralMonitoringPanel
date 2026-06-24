@@ -7,7 +7,7 @@ import {
   DataTableColumnHeader,
 } from "@/shared/components/data-table"
 import { PermissionGuard } from "@/shared/auth"
-import { Button } from "@/shared/components/ui"
+import { Button, ConfirmDialog } from "@/shared/components/ui"
 import { PERMISSIONS } from "@/shared/constants"
 
 import type { Role } from "@/features/roles/types/role.types"
@@ -68,19 +68,24 @@ function getColumns({
                 <Pencil aria-hidden="true" />
                 Edit
               </Button>
-              <Button
-                aria-label={`Delete ${role.name}`}
-                disabled={isDeleting}
-                onClick={(event) => {
-                  event.stopPropagation()
-                  onDeleteRole?.(role)
-                }}
-                size="sm"
-                variant="destructive"
+              <ConfirmDialog
+                confirmLabel={isDeleting ? "Deleting..." : "Delete"}
+                description={`${role.name} will be removed from the role catalog.`}
+                destructive
+                onConfirm={() => onDeleteRole?.(role)}
+                title="Delete role"
               >
-                <Trash2 aria-hidden="true" />
-                Delete
-              </Button>
+                <Button
+                  aria-label={`Delete ${role.name}`}
+                  disabled={isDeleting}
+                  onClick={(event) => event.stopPropagation()}
+                  size="sm"
+                  variant="destructive"
+                >
+                  <Trash2 aria-hidden="true" />
+                  Delete
+                </Button>
+              </ConfirmDialog>
             </div>
           </PermissionGuard>
         )

@@ -48,7 +48,7 @@ export function SettingsPage() {
       onSuccess: (updatedSettings) => {
         reset(updatedSettings)
         showToast({
-          description: "Platform settings were saved in mock mode.",
+          description: "Platform settings were saved successfully.",
           title: "Settings saved",
           tone: "success",
         })

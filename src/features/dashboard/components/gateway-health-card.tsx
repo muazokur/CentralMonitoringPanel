@@ -5,9 +5,9 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
+  ProgressBar,
   StatusBadge,
 } from "@/shared/components/ui"
-import { cn } from "@/shared/lib/utils"
 
 type GatewayHealthCardProps = {
   health: GatewayHealth
@@ -58,6 +58,12 @@ type GatewayHealthItemProps = {
   status: "online" | "warning" | "offline"
 }
 
+const progressToneMap = {
+  offline: "neutral",
+  online: "success",
+  warning: "warning",
+} as const
+
 function GatewayHealthItem({
   label,
   value,
@@ -77,17 +83,12 @@ function GatewayHealthItem({
         </StatusBadge>
       </div>
       <p className="mt-3 text-2xl font-semibold text-foreground">{value}</p>
-      <div className="mt-3 h-2 overflow-hidden rounded-full bg-muted">
-        <div
-          className={cn(
-            "h-full rounded-full",
-            status === "online" && "bg-status-success",
-            status === "warning" && "bg-status-warning",
-            status === "offline" && "bg-muted-foreground",
-          )}
-          style={{ width: `${percent}%` }}
-        />
-      </div>
+      <ProgressBar
+        className="mt-3"
+        label={`${label} gateway share`}
+        tone={progressToneMap[status]}
+        value={percent}
+      />
     </div>
   )
 }

@@ -74,7 +74,7 @@ export function SettingsForm({
       </FormCard>
 
       <FormCard
-        description="Prepare client-side API defaults for future backend integration."
+        description="Manage API connection defaults for platform services."
         title="API settings"
       >
         <div className="grid gap-4 md:grid-cols-2">
@@ -95,7 +95,7 @@ export function SettingsForm({
           />
           <FormSwitch
             control={control}
-            description="Enable periodic EdgeGateway synchronization once backend endpoints are available."
+            description="Enable periodic EdgeGateway synchronization for configured services."
             disabled={disabled}
             label="Gateway sync"
             name="gatewaySyncEnabled"

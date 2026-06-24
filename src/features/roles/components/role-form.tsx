@@ -18,7 +18,7 @@ type RoleFormProps = {
 export function RoleForm({ control, isSubmitting, onCancel }: RoleFormProps) {
   return (
     <FormCard
-      description="Define the role identity. Permission selection will be wired to backend metadata later."
+      description="Define the role identity and permission coverage summary."
       title="Role details"
     >
       <div className="grid gap-4">

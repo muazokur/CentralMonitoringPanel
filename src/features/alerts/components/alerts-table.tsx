@@ -6,7 +6,9 @@ import {
   DataTable,
   DataTableColumnHeader,
 } from "@/shared/components/data-table"
+import { PermissionGuard } from "@/shared/auth"
 import { Button, StatusBadge } from "@/shared/components/ui"
+import { PERMISSIONS } from "@/shared/constants"
 
 import type { Alert } from "@/features/alerts/types/alert.types"
 
@@ -53,18 +55,23 @@ function getColumns(onReviewAlert?: (alert: Alert) => void): ColumnDef<Alert>[] 
       id: "actions",
       header: "Actions",
       cell: ({ row }) => (
-        <Button
-          aria-label={`Review alert ${row.original.id}`}
-          onClick={(event) => {
-            event.stopPropagation()
-            onReviewAlert?.(row.original)
-          }}
-          size="sm"
-          variant="outline"
+        <PermissionGuard
+          fallback={<span className="text-sm text-muted-foreground">-</span>}
+          permission={PERMISSIONS.alertsManage}
         >
-          <Eye aria-hidden="true" />
-          Review
-        </Button>
+          <Button
+            aria-label={`Review alert ${row.original.id}`}
+            onClick={(event) => {
+              event.stopPropagation()
+              onReviewAlert?.(row.original)
+            }}
+            size="sm"
+            variant="outline"
+          >
+            <Eye aria-hidden="true" />
+            Review
+          </Button>
+        </PermissionGuard>
       ),
     },
   ]

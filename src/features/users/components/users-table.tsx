@@ -7,7 +7,7 @@ import {
   DataTableColumnHeader,
 } from "@/shared/components/data-table"
 import { PermissionGuard } from "@/shared/auth"
-import { Button, StatusBadge } from "@/shared/components/ui"
+import { Button, ConfirmDialog, StatusBadge } from "@/shared/components/ui"
 import { PERMISSIONS } from "@/shared/constants"
 
 import type { PlatformUser } from "@/features/users/types/user.types"
@@ -73,19 +73,24 @@ function getColumns({
                 <Pencil aria-hidden="true" />
                 Edit
               </Button>
-              <Button
-                aria-label={`Delete ${user.fullName}`}
-                disabled={isDeleting}
-                onClick={(event) => {
-                  event.stopPropagation()
-                  onDeleteUser?.(user)
-                }}
-                size="sm"
-                variant="destructive"
+              <ConfirmDialog
+                confirmLabel={isDeleting ? "Deleting..." : "Delete"}
+                description={`${user.fullName} will be removed from the platform access list.`}
+                destructive
+                onConfirm={() => onDeleteUser?.(user)}
+                title="Delete user"
               >
-                <Trash2 aria-hidden="true" />
-                Delete
-              </Button>
+                <Button
+                  aria-label={`Delete ${user.fullName}`}
+                  disabled={isDeleting}
+                  onClick={(event) => event.stopPropagation()}
+                  size="sm"
+                  variant="destructive"
+                >
+                  <Trash2 aria-hidden="true" />
+                  Delete
+                </Button>
+              </ConfirmDialog>
             </div>
           </PermissionGuard>
         )
