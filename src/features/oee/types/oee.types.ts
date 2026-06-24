@@ -27,6 +27,11 @@ export type DateRangeComparison = {
   delta: number
 }
 
+export type OeeDateRangeFilter = {
+  fromDate?: string
+  toDate?: string
+}
+
 export type OeeSummary = {
   availability: number
   performance: number

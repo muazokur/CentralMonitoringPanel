@@ -1,7 +1,27 @@
 import { simulateNetwork } from "@/features/mock-utils"
 import { oeeSummaryMock } from "@/features/oee/mocks/oee.mock"
-import type { OeeSummary } from "@/features/oee/types/oee.types"
+import type {
+  OeeDateRangeFilter,
+  OeeSummary,
+} from "@/features/oee/types/oee.types"
 
-export async function getOeeSummary(): Promise<OeeSummary> {
-  return simulateNetwork(oeeSummaryMock)
+function hasDateRange(filter?: OeeDateRangeFilter) {
+  return Boolean(filter?.fromDate || filter?.toDate)
+}
+
+export async function getOeeSummary(
+  filter?: OeeDateRangeFilter,
+): Promise<OeeSummary> {
+  if (!hasDateRange(filter)) {
+    return simulateNetwork(oeeSummaryMock)
+  }
+
+  return simulateNetwork({
+    ...oeeSummaryMock,
+    dateRangeComparison: {
+      currentOee: oeeSummaryMock.dateRangeComparison.currentOee,
+      delta: 2.1,
+      previousOee: 67.5,
+    },
+  })
 }

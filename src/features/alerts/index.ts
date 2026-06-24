@@ -1,6 +1,7 @@
 export * from "./api/alerts-api"
 export * from "./api/alerts-query-keys"
 export * from "./components/alert-form"
+export * from "./components/alerts-filter-panel"
 export * from "./components/alerts-table"
 export * from "./hooks/use-alert-mutations"
 export * from "./hooks/use-alerts"

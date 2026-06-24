@@ -12,6 +12,19 @@ export type Alert = {
   resolvedAt?: string
 }
 
+export type AlertFilters = {
+  severity?: AlertSeverity
+  status?: AlertStatus
+  machine?: string
+}
+
+export type AlertFilterOptions = {
+  machines: {
+    label: string
+    value: string
+  }[]
+}
+
 export type AlertFormValues = {
   severity: AlertSeverity
   machineId: string
