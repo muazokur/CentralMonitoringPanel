@@ -1,6 +1,7 @@
 export * from "./api/users-api"
 export * from "./api/users-query-keys"
 export * from "./components/user-form"
+export * from "./components/users-page-actions"
 export * from "./components/users-table"
 export * from "./hooks/use-user-mutations"
 export * from "./hooks/use-users"

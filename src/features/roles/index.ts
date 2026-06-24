@@ -1,6 +1,7 @@
 export * from "./api/roles-api"
 export * from "./api/roles-query-keys"
 export * from "./components/role-form"
+export * from "./components/roles-page-actions"
 export * from "./components/roles-table"
 export * from "./hooks/use-role-mutations"
 export * from "./hooks/use-roles"
