@@ -1,0 +1,17 @@
+{
+  "page": {
+    "title": "Edge Gateways",
+    "description": "Review gateway health, heartbeat and connected machine relationships."
+  },
+  "table": {
+    "columns": {
+      "name": "Gateway name",
+      "status": "Status",
+      "lastHeartbeat": "Last heartbeat",
+      "ipAddress": "IP address",
+      "connectedMachines": "Connected machines",
+      "dataStatus": "Data status",
+      "actions": "Actions"
+    }
+  }
+}

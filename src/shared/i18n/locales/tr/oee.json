@@ -1,0 +1,12 @@
+{
+  "page": {
+    "title": "OEE Dashboard",
+    "description": "Makineler ve vardiyalar genelinde kullanılabilirlik, performans, kalite ve OEE değerlerini izleyin."
+  },
+  "metrics": {
+    "availability": "Kullanılabilirlik",
+    "performance": "Performans",
+    "quality": "Kalite",
+    "oee": "OEE"
+  }
+}

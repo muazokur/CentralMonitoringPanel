@@ -1,0 +1,53 @@
+{
+  "actions": {
+    "apply": "Uygula",
+    "cancel": "İptal",
+    "clear": "Temizle",
+    "close": "Kapat",
+    "confirm": "Onayla",
+    "create": "Oluştur",
+    "delete": "Sil",
+    "edit": "Düzenle",
+    "export": "Dışa aktar",
+    "reset": "Sıfırla",
+    "save": "Kaydet",
+    "search": "Ara",
+    "view": "Görüntüle"
+  },
+  "language": {
+    "selectorLabel": "Dil seçimi",
+    "turkish": "Türkçe",
+    "english": "İngilizce"
+  },
+  "status": {
+    "active": "Aktif",
+    "inactive": "Pasif",
+    "online": "Çevrimiçi",
+    "offline": "Çevrimdışı",
+    "warning": "Uyarı",
+    "critical": "Kritik",
+    "resolved": "Çözüldü",
+    "pending": "Bekliyor",
+    "ready": "Hazır",
+    "failed": "Başarısız"
+  },
+  "states": {
+    "loading": "Yükleniyor",
+    "empty": "Kayıt bulunamadı",
+    "error": "Bir hata oluştu"
+  },
+  "topbar": {
+    "openNavigation": "Navigasyonu aç",
+    "expandSidebar": "Yan menüyü genişlet",
+    "collapseSidebar": "Yan menüyü daralt",
+    "searchLabel": "Ara",
+    "searchPlaceholder": "Makine, gateway, tag ara...",
+    "toggleTheme": "Renk temasını değiştir"
+  },
+  "userMenu": {
+    "profile": "Profil",
+    "preferences": "Tercihler",
+    "signOut": "Çıkış yap",
+    "signingOut": "Çıkış yapılıyor..."
+  }
+}

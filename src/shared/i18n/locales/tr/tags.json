@@ -1,0 +1,18 @@
+{
+  "page": {
+    "title": "Tag'ler",
+    "description": "PLC tag tanımlarını, makine ilişkilerini, gateway kaynağını ve aktiflik durumunu inceleyin."
+  },
+  "table": {
+    "columns": {
+      "tagName": "Tag adı",
+      "tagCode": "Tag kodu",
+      "dataType": "Veri tipi",
+      "unit": "Birim",
+      "machine": "Makine",
+      "gateway": "Gateway",
+      "activeStatus": "Aktiflik",
+      "actions": "Aksiyonlar"
+    }
+  }
+}

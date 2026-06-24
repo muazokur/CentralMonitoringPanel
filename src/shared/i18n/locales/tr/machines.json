@@ -1,0 +1,18 @@
+{
+  "page": {
+    "title": "Makineler",
+    "description": "Makine kullanılabilirliği, anlık durum, gateway ilişkisi ve OEE performansını inceleyin."
+  },
+  "table": {
+    "columns": {
+      "machineName": "Makine adı",
+      "code": "Kod",
+      "status": "Durum",
+      "gateway": "Gateway",
+      "currentState": "Anlık durum",
+      "oee": "OEE",
+      "lastUpdate": "Son güncelleme",
+      "actions": "Aksiyonlar"
+    }
+  }
+}

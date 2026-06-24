@@ -1,4 +1,5 @@
 export { AppLayout, MainContent } from "@/shared/components/layout/app-layout"
+export { LanguageSelector } from "@/shared/components/layout/language-selector"
 export { MobileSidebar } from "@/shared/components/layout/mobile-sidebar"
 export { Sidebar } from "@/shared/components/layout/sidebar"
 export { SidebarNavItem } from "@/shared/components/layout/sidebar-nav-item"

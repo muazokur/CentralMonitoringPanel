@@ -1,0 +1,21 @@
+{
+  "sections": {
+    "operations": "Operations",
+    "analytics": "Analytics",
+    "administration": "Administration"
+  },
+  "items": {
+    "dashboard": "Dashboard",
+    "edgeGateways": "Edge Gateways",
+    "machines": "Machines",
+    "tags": "Tags",
+    "tagValueHistory": "Tag Value History",
+    "oee": "OEE Dashboard",
+    "analytics": "Analytics",
+    "alerts": "Alerts",
+    "reports": "Reports",
+    "users": "Users",
+    "roles": "Roles",
+    "settings": "Settings"
+  }
+}

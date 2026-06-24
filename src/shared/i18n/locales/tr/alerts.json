@@ -1,0 +1,18 @@
+{
+  "page": {
+    "title": "Alarmlar",
+    "description": "Alarm önceliği, durum, makine ilişkisi ve çözüm geçmişini inceleyin."
+  },
+  "table": {
+    "columns": {
+      "severity": "Öncelik",
+      "machine": "Makine",
+      "tag": "Tag",
+      "message": "Mesaj",
+      "status": "Durum",
+      "createdAt": "Oluşturulma",
+      "resolvedAt": "Çözülme",
+      "actions": "Aksiyonlar"
+    }
+  }
+}

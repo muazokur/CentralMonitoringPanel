@@ -1,0 +1,12 @@
+{
+  "page": {
+    "title": "Tag Değer Geçmişi",
+    "description": "Geçmiş PLC tag değerlerini tarih aralığı, makine ve tag ile arayın."
+  },
+  "filters": {
+    "fromDate": "Başlangıç tarihi",
+    "toDate": "Bitiş tarihi",
+    "machine": "Makine",
+    "tag": "Tag"
+  }
+}

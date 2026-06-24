@@ -1,0 +1,12 @@
+{
+  "page": {
+    "title": "Analytics",
+    "description": "Track production efficiency, downtime and machine performance trends."
+  },
+  "charts": {
+    "efficiencyTrends": "Efficiency trends",
+    "downtimeSummary": "Downtime summary",
+    "productionPerformance": "Production performance",
+    "machineComparison": "Machine comparison"
+  }
+}

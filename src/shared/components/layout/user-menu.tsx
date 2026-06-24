@@ -1,5 +1,6 @@
 import { LogOut, Settings, User } from "lucide-react"
 import { DropdownMenu } from "radix-ui"
+import { useTranslation } from "react-i18next"
 
 import { useCurrentUser } from "@/features/auth/hooks/use-current-user"
 import { useLogout } from "@/features/auth/hooks/use-logout"
@@ -7,6 +8,7 @@ import { Button } from "@/shared/components/ui"
 import { useAuth } from "@/shared/auth"
 
 export function UserMenu() {
+  const { t } = useTranslation("common")
   const { user: sessionUser } = useAuth()
   const currentUserQuery = useCurrentUser()
   const logoutMutation = useLogout()
@@ -46,11 +48,11 @@ export function UserMenu() {
           </div>
           <DropdownMenu.Item className="flex min-h-9 cursor-default items-center gap-2 rounded-md px-2 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
             <User className="size-4" />
-            Profile
+            {t("userMenu.profile")}
           </DropdownMenu.Item>
           <DropdownMenu.Item className="flex min-h-9 cursor-default items-center gap-2 rounded-md px-2 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
             <Settings className="size-4" />
-            Preferences
+            {t("userMenu.preferences")}
           </DropdownMenu.Item>
           <DropdownMenu.Separator className="my-1 h-px bg-border" />
           <DropdownMenu.Item
@@ -61,7 +63,9 @@ export function UserMenu() {
             }}
           >
             <LogOut className="size-4" />
-            {logoutMutation.isPending ? "Signing out..." : "Sign out"}
+            {logoutMutation.isPending
+              ? t("userMenu.signingOut")
+              : t("userMenu.signOut")}
           </DropdownMenu.Item>
         </DropdownMenu.Content>
       </DropdownMenu.Portal>

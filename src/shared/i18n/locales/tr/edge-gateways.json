@@ -1,0 +1,17 @@
+{
+  "page": {
+    "title": "Edge Gateway'ler",
+    "description": "Gateway sağlık durumu, heartbeat ve bağlı makine ilişkilerini izleyin."
+  },
+  "table": {
+    "columns": {
+      "name": "Gateway adı",
+      "status": "Durum",
+      "lastHeartbeat": "Son heartbeat",
+      "ipAddress": "IP adresi",
+      "connectedMachines": "Bağlı makineler",
+      "dataStatus": "Veri durumu",
+      "actions": "Aksiyonlar"
+    }
+  }
+}

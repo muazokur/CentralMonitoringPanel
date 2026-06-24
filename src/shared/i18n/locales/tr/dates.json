@@ -1,0 +1,12 @@
+{
+  "formats": {
+    "date": "dd.MM.yyyy",
+    "dateTime": "dd.MM.yyyy HH:mm",
+    "time": "HH:mm"
+  },
+  "relative": {
+    "today": "Bugün",
+    "yesterday": "Dün",
+    "lastUpdated": "Son güncelleme"
+  }
+}

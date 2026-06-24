@@ -1,0 +1,18 @@
+{
+  "page": {
+    "title": "Roller",
+    "description": "Erişim rollerini, kullanıcı sayılarını ve izin kapsamını inceleyin."
+  },
+  "actions": {
+    "create": "Rol oluştur"
+  },
+  "table": {
+    "columns": {
+      "roleName": "Rol adı",
+      "description": "Açıklama",
+      "userCount": "Kullanıcı sayısı",
+      "permissionCount": "İzin sayısı",
+      "actions": "Aksiyonlar"
+    }
+  }
+}

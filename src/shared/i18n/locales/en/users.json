@@ -1,0 +1,19 @@
+{
+  "page": {
+    "title": "Users",
+    "description": "Manage platform users, role assignments and account status."
+  },
+  "actions": {
+    "invite": "Invite user"
+  },
+  "table": {
+    "columns": {
+      "fullName": "Full name",
+      "email": "Email",
+      "role": "Role",
+      "status": "Status",
+      "lastLogin": "Last login",
+      "actions": "Actions"
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "actions": {
+    "apply": "Apply",
+    "cancel": "Cancel",
+    "clear": "Clear",
+    "close": "Close",
+    "confirm": "Confirm",
+    "create": "Create",
+    "delete": "Delete",
+    "edit": "Edit",
+    "export": "Export",
+    "reset": "Reset",
+    "save": "Save",
+    "search": "Search",
+    "view": "View"
+  },
+  "language": {
+    "selectorLabel": "Language selector",
+    "turkish": "Turkish",
+    "english": "English"
+  },
+  "status": {
+    "active": "Active",
+    "inactive": "Inactive",
+    "online": "Online",
+    "offline": "Offline",
+    "warning": "Warning",
+    "critical": "Critical",
+    "resolved": "Resolved",
+    "pending": "Pending",
+    "ready": "Ready",
+    "failed": "Failed"
+  },
+  "states": {
+    "loading": "Loading",
+    "empty": "No records found",
+    "error": "Something went wrong"
+  },
+  "topbar": {
+    "openNavigation": "Open navigation",
+    "expandSidebar": "Expand sidebar",
+    "collapseSidebar": "Collapse sidebar",
+    "searchLabel": "Search",
+    "searchPlaceholder": "Search machines, gateways, tags...",
+    "toggleTheme": "Toggle color theme"
+  },
+  "userMenu": {
+    "profile": "Profile",
+    "preferences": "Preferences",
+    "signOut": "Sign out",
+    "signingOut": "Signing out..."
+  }
+}

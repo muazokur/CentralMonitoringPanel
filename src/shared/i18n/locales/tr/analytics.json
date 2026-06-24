@@ -1,0 +1,12 @@
+{
+  "page": {
+    "title": "Analitik",
+    "description": "Üretim verimliliği, duruşlar ve makine performans eğilimlerini takip edin."
+  },
+  "charts": {
+    "efficiencyTrends": "Verimlilik trendleri",
+    "downtimeSummary": "Duruş özeti",
+    "productionPerformance": "Üretim performansı",
+    "machineComparison": "Makine karşılaştırması"
+  }
+}

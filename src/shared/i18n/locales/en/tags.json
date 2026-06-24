@@ -1,0 +1,18 @@
+{
+  "page": {
+    "title": "Tags",
+    "description": "Review PLC tag definitions, machine relations, gateway source and active status."
+  },
+  "table": {
+    "columns": {
+      "tagName": "Tag name",
+      "tagCode": "Tag code",
+      "dataType": "Data type",
+      "unit": "Unit",
+      "machine": "Machine",
+      "gateway": "Gateway",
+      "activeStatus": "Active status",
+      "actions": "Actions"
+    }
+  }
+}

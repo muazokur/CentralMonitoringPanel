@@ -1,0 +1,18 @@
+{
+  "forbidden": {
+    "title": "Access denied",
+    "description": "You do not have permission to view this page."
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "The page you are looking for may not exist or may have moved."
+  },
+  "server": {
+    "title": "Server error",
+    "description": "An unexpected error occurred while processing the request."
+  },
+  "network": {
+    "title": "Network error",
+    "description": "A network connection could not be established. Please try again."
+  }
+}

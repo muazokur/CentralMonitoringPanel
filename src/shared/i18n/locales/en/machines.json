@@ -1,0 +1,18 @@
+{
+  "page": {
+    "title": "Machines",
+    "description": "Review machine availability, current state, gateway relation and OEE performance."
+  },
+  "table": {
+    "columns": {
+      "machineName": "Machine name",
+      "code": "Code",
+      "status": "Status",
+      "gateway": "Gateway",
+      "currentState": "Current state",
+      "oee": "OEE",
+      "lastUpdate": "Last update",
+      "actions": "Actions"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "page": {
+    "title": "Dashboard",
+    "description": "Monitor production health, telemetry flow, OEE performance and operational risks."
+  },
+  "metrics": {
+    "activeMachines": "Active machines",
+    "offlineMachines": "Offline machines",
+    "activeAlerts": "Active alerts",
+    "averageOee": "Average OEE",
+    "dataReceivedToday": "Data received today"
+  }
+}

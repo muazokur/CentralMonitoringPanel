@@ -1,0 +1,12 @@
+{
+  "page": {
+    "title": "Ayarlar",
+    "description": "Sistem, API, tema ve bildirim varsayılanlarını yapılandırın."
+  },
+  "sections": {
+    "system": "Sistem ayarları",
+    "api": "API ayarları",
+    "theme": "Tema ayarları",
+    "notifications": "Bildirim ayarları"
+  }
+}

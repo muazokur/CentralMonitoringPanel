@@ -1,0 +1,13 @@
+{
+  "page": {
+    "title": "Dashboard",
+    "description": "Üretim sağlığı, telemetri akışı, OEE performansı ve operasyonel riskleri izleyin."
+  },
+  "metrics": {
+    "activeMachines": "Aktif makineler",
+    "offlineMachines": "Çevrimdışı makineler",
+    "activeAlerts": "Aktif alarmlar",
+    "averageOee": "Ortalama OEE",
+    "dataReceivedToday": "Bugün alınan veri"
+  }
+}

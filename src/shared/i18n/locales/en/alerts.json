@@ -1,0 +1,18 @@
+{
+  "page": {
+    "title": "Alerts",
+    "description": "Review alarm severity, status, machine relation and resolution history."
+  },
+  "table": {
+    "columns": {
+      "severity": "Severity",
+      "machine": "Machine",
+      "tag": "Tag",
+      "message": "Message",
+      "status": "Status",
+      "createdAt": "Created",
+      "resolvedAt": "Resolved",
+      "actions": "Actions"
+    }
+  }
+}

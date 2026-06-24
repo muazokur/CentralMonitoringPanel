@@ -1,0 +1,12 @@
+{
+  "page": {
+    "title": "Raporlar",
+    "description": "OEE, üretim, duruş ve verimlilik raporlarına erişin."
+  },
+  "types": {
+    "oee": "OEE raporu",
+    "production": "Üretim raporu",
+    "downtime": "Duruş raporu",
+    "efficiency": "Verimlilik raporu"
+  }
+}

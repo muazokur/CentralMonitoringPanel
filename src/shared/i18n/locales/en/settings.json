@@ -1,0 +1,12 @@
+{
+  "page": {
+    "title": "Settings",
+    "description": "Configure system, API, theme and notification defaults."
+  },
+  "sections": {
+    "system": "System settings",
+    "api": "API settings",
+    "theme": "Theme settings",
+    "notifications": "Notification settings"
+  }
+}

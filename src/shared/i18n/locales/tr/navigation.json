@@ -1,0 +1,21 @@
+{
+  "sections": {
+    "operations": "Operasyon",
+    "analytics": "Analitik",
+    "administration": "Yönetim"
+  },
+  "items": {
+    "dashboard": "Dashboard",
+    "edgeGateways": "Edge Gateway'ler",
+    "machines": "Makineler",
+    "tags": "Tag'ler",
+    "tagValueHistory": "Tag Değer Geçmişi",
+    "oee": "OEE Dashboard",
+    "analytics": "Analitik",
+    "alerts": "Alarmlar",
+    "reports": "Raporlar",
+    "users": "Kullanıcılar",
+    "roles": "Roller",
+    "settings": "Ayarlar"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "forbidden": {
+    "title": "Erişim engellendi",
+    "description": "Bu sayfayı görüntülemek için gerekli izniniz yok."
+  },
+  "notFound": {
+    "title": "Sayfa bulunamadı",
+    "description": "Aradığınız sayfa mevcut değil veya taşınmış olabilir."
+  },
+  "server": {
+    "title": "Sunucu hatası",
+    "description": "İstek işlenirken beklenmeyen bir hata oluştu."
+  },
+  "network": {
+    "title": "Bağlantı hatası",
+    "description": "Ağ bağlantısı kurulamadı. Lütfen tekrar deneyin."
+  }
+}

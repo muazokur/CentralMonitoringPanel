@@ -1,0 +1,12 @@
+{
+  "page": {
+    "title": "Reports",
+    "description": "Access OEE, production, downtime and efficiency reports."
+  },
+  "types": {
+    "oee": "OEE report",
+    "production": "Production report",
+    "downtime": "Downtime report",
+    "efficiency": "Efficiency report"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "required": "Bu alan zorunludur.",
+  "email": "Geçerli bir e-posta adresi girin.",
+  "url": "Geçerli bir URL girin.",
+  "number": "Geçerli bir sayı girin.",
+  "min": "Değer çok düşük.",
+  "max": "Değer çok yüksek."
+}

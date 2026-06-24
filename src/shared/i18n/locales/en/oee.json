@@ -1,0 +1,12 @@
+{
+  "page": {
+    "title": "OEE Dashboard",
+    "description": "Monitor availability, performance, quality and OEE across machines and shifts."
+  },
+  "metrics": {
+    "availability": "Availability",
+    "performance": "Performance",
+    "quality": "Quality",
+    "oee": "OEE"
+  }
+}

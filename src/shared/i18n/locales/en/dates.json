@@ -1,0 +1,12 @@
+{
+  "formats": {
+    "date": "MM/dd/yyyy",
+    "dateTime": "MM/dd/yyyy HH:mm",
+    "time": "HH:mm"
+  },
+  "relative": {
+    "today": "Today",
+    "yesterday": "Yesterday",
+    "lastUpdated": "Last updated"
+  }
+}

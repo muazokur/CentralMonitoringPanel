@@ -1,0 +1,18 @@
+{
+  "page": {
+    "title": "Roles",
+    "description": "Review access roles, assigned users and permission coverage."
+  },
+  "actions": {
+    "create": "Create role"
+  },
+  "table": {
+    "columns": {
+      "roleName": "Role name",
+      "description": "Description",
+      "userCount": "User count",
+      "permissionCount": "Permission count",
+      "actions": "Actions"
+    }
+  }
+}

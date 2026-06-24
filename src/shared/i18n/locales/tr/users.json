@@ -1,0 +1,19 @@
+{
+  "page": {
+    "title": "Kullanıcılar",
+    "description": "Platform kullanıcılarını, rol atamalarını ve hesap durumunu yönetin."
+  },
+  "actions": {
+    "invite": "Kullanıcı davet et"
+  },
+  "table": {
+    "columns": {
+      "fullName": "Ad soyad",
+      "email": "E-posta",
+      "role": "Rol",
+      "status": "Durum",
+      "lastLogin": "Son giriş",
+      "actions": "Aksiyonlar"
+    }
+  }
+}

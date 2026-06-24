@@ -1,0 +1,12 @@
+{
+  "page": {
+    "title": "Tag Value History",
+    "description": "Search historical PLC tag values by date range, machine and tag."
+  },
+  "filters": {
+    "fromDate": "From date",
+    "toDate": "To date",
+    "machine": "Machine",
+    "tag": "Tag"
+  }
+}
